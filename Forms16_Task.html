@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<title>Windows Forms - zadanie 2</title>
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<h1>Edytor schematów blokowych</h1>
+<p>
+Zadaniem jest stworzenie uproszczonego edytora schematów blokowych umożliwiających opisywanie prostych algorytmów.
+Zadanie jest podzielone na część laboratoryjną (12p) oraz część domową (12p). Zaznacza się, że część domowa jest 
+rozwinięciem części laboratoryjnej, zatem jest niezbędne, aby działała <b>w całości</b>, inaczej część domowa 
+zostanie oceniona na 0pkt. W razie wątpliwości co do działania aplikacji, 
+proszę wzorować się na aplikacji przykładowej, jeżeli coś nadal jest niejasne, proszę pytać prowadzącego.
+</p>
+<h2>Część Laboratoryjna</h2>
+<ul>
+	<li><a href="BloqLab.exe">Aplikacja przykładowa</a></li>
+	<li>Layout:
+    <ul>
+		<li>Okno pojawia się na środku ekranu</li>
+	    <li>Minialny rozmiar okna: 800x600</li>
+		<li>Okno dzieli się na dwa główne obszary: prawy - panel z narzędziami zajmujący 200px, 
+		oraz lewy - obszar roboczy schematu zajmujący pozostałe dostępne miejsce zawierający bitmapę, na której będzie można układać schemat</li>
+		<li>Dodatkowo prawy obszar jest podzielony w  na trzy sekcje, każda z nich zawarta w kontenerze GroupBox:
+		<ul>
+			<li>Plik - zawiera 3 jednakowej wielkości przyciski - Nowy Schemat, Zapisz Schemat oraz Wczytaj Schemat (2 ostatnie zablokowane)</li>
+			<li>Edycja - zawiera 2 przyciski narzędzi (stałego rozmiaru) - blok operacyjny oraz decyzyjny. Aktywny przycisk jest podświetlany</li>
+			<li>Język - zawiera 2 zablokowane przyciski - Polski oraz Angielski</li>
+		</ul>
+		</li>
+		<li>Bitmapa obszaru roboczego ma stały rozmiar i gdy jest on większy niż rozmiar części roboczej, powinny wyświetlać się ScrollBary</li>
+    </ul>
+	</li>
+	<li>Dodawanie elementów:
+       <ul>
+        <li>Kliknięcie LPM w obszar roboczy powoduje dodanie w miejscu kursora elementu wybranego z panelu narzędzi w sekcji Edycja</li>
+        <li>Elementy mogą mieć ustalony, stały rozmiar.</li>
+		<li>Dostępne są 2 elementy: blok operacyjny w kształcie prostokąta, oraz blok decyzyjny w kształcie rombu</li>
+		<li>Wstawione elementy mają czarną obwódkę oraz białe tło (wstawianie elementów na sobie nie powoduje nakładania się linii)</li>
+		<li>Wewnątrz elementów pojawia się wyśrodkowany tekst, różny w zależności od rodzaju bloku.</li>
+		<li>Elementy diagramu powinny być przechowywane w formie wektorowej, należy zadbać o poprawną implementację klas.</li>
+	   </ul>
+	</li>
+	<li>Nowy Schemat:
+       <ul>
+        <li>Kliknięcie w przycisk otwiera nowe okno modalne (FixedToolWindow) o stałym rozmiarze na środku okna głównego</li>
+        <li>W oknie powinna być możliwość wpisania szerokości oraz wysokości bitmapy nowego schematu (min. 500x500px)</li>
+		<li>Po zatwierdzeniu przyciskiem OK, okno zamyka się i tworzy się nowa bitmapa z pustym schematem</li>
+		<li>Uwaga: Zamknięcie okienka poprzez kliknięcie X powinno pozostawić starą bitmapę oraz schemat</li>
+	   </ul>
+	</li>
+  <li>Wskazówki:
+    <ul>
+        <li>TableLayoutPanel, RowSpan/ColumnSpan Property, Dock Property, PictureBox, GroupBox, RadioButton, NumericUpDown</li>
+        <li>MouseDown Event, Graphics methods, PictureBox.Refresh, Focus, WindowsStartLocation</li>
+    </ul>
+  </li>
+  <li><i>Uwaga: We wszystkich wątpliwych i nieopisanych aspektach obowiązuje odtwarzanie zachowania programu wzorcowego (poza ewentualnymi błędami)</i></li>
+</ul>
+
+<ul>
+	<li>Punktacja:
+	<ul>
+		<li>Layout:
+		<ul>
+			<li>Lewy panel z bitmapą - <b>1p</b></li>
+			<li>Prawy panel - <b>2p</b></li>
+			<li>Scrollowanie bitmapy - <b>1p</b></li>
+	    </ul>
+		</li>
+		<li>Dodawanie Elementów:
+		<ul>
+			<li>Wstawianie elementów na bitmapie - <b>3p</b></li>
+			<li>Poprawna implementacja klas - <b>1p</b></li>
+			<li>Wyświetlanie wyśrodkowanego tekstu - <b>1p</b></li>
+	    </ul>
+		</li>
+		<li>Okno i tworzenie nowego schematu - <b>3p</b></li>
+	</ul>
+	</li>
+</ul>
+
+<h2>---------------------------------------------------------------</h2>
+
+<h2>Część Domowa</h2>
+<ul>
+  <li><a href="BloqHome.exe">Aplikacja przykładowa</a></li>
+  <li>Plik:
+       <ul>
+	   <li>Przyciski Zapisz Schemat oraz Wczytaj Schemat są aktywne</li>
+	   <li>Po kliknięciu przycisku Zapisz Schemat otwiera się odpowiednie okno dialogowe pozwalające wpisać nazwę zapisywanego pliku</li>
+	   <li>Zapisane powinny być wszystkie niezbędne informacje o schemcie, tak, aby po wczytaniu 
+	   uzyskać identyczny efekt na bitmapie</li>
+	   <li>Po kliknięciu przycisku Wczytaj Schemat otwiera się odpowiednie okno dialogowe pozwalające wybrać diagram do wczytania</li>
+	   <li>W przypadku wczytania wadliwego pliku użytkownik powinien być poinformowany o błędzie</li>
+	   <li>Sposób zapisywania plików jest dowolny, lecz powinny mieć ustalone rozszerzenie (np *.diag)</li>
+       </ul>
+  </li>
+  <li>Edycja elementów:
+       <ul>
+	    <li>Kliknięcie PPM na istniejący element powoduje jego zaznaczenie</li>
+		<li>Obwódka zaznaczonego elementu rysowana jest linią przerywaną</li>
+		<li>Kliknięcie PPM na pozostały obszar roboczy powoduje odznaczenie bloku</li>
+		<li>Podczas, gdy kilka elementów jest bardzo blisko siebie, zaznaczony powinien być element najbliższy kursorowi</li>
+		<li>Kliknięcie i przytrzymanie ŚPM (scroll) w dowolnym miejscu na obszarze roboczym a następnie poruszanie myszką powoduje poruszanie się zaznaczonego obiektu</li>
+		<li>Podczas poruszania bloku poruszają się też wszystkie połączone z nim krawędzie (więcej w dalszej części zadania)</li>
+		<li>Podczas poruszania bloku nie można wykonywać innych akcji, np. wstawiania nowych elementów</li>
+		<li>Przy puszczeniu bloku poza obszarem roboczym, element powinien być "ściągany" na jego brzeg, tak aby był nadal widoczny (snap)</li>
+		<li>Zaznaczenie dowolnego bloku powoduje wyświetlenie jego zawartości w odpowiednim polu tekstowym w panelu Edycja. Jednak tylko podczas zaznaczenia bloku decyzyjnego lub operacyjnego
+		kontrolka ta staje się aktywna</li>
+		<li>Zmiana tekstu w panelu Edycji powoduje zmianę zawartości elementu. Zmiana powinna pojawiać się od razu i nie powinna wymagać żadnego potwierdzenia</li>
+		<li>Tekst nie powinien wykraczać poza obszar danego bloku</li>
+		<li>Odznaczenie elementu powoduje odpowiednio zablokowanie pole tekstowego</li>
+		<li>Pole tekstowe powinno być puste, gdy żaden obiekt nie jest zaznaczony</li>
+       </ul>
+  </li>
+  <li>Łączenie elementów:
+       <ul>
+	    <li>Każdy element posiada węzły, dzięki którym można łączyć ze sobą bloki zachowując kierunek połączenia</li>
+	    <li>Węzeł może być wejściowy lub wyjściowy</li>
+		<li>Kierunek połączenia zawsze jest od węzła wyjściowego do wejściowego</li>
+		<li>Węzły powinny mieć swoją reprezentację na bitmapie oraz być rozróżnialne na schemacie. Tylko niepołączony węzeł powinien być widoczny na bitmapie</li>
+		<li>Podczas wybrania narzędzia łączenia z panelu Edycja (ikonka łańcuszka) można łączyć ze sobą elementy klikając i przytrzymując LPM na węźle wyjściowym jednego elementu i puszczając 
+		przycisk na węźle wejściowym innego elementu. Wówczas elementy zostają ze sobą połączone</li>
+		<li>Kierunek połączenie powinien być reprezentowany w jakiś sposób (np. strzałka)</li>
+		<li>Jeden węzeł może być odpowiedzialny tylko za jedno połączenie</li>
+		<li>Podczas trzymania LPM tworzenie połączenia powinno być wizualizowane przez linię idącą od węzła wyjściowego do kursora</li>
+		<li>Usunięcie elementu powoduje również usunięcie wszystkich połączeń. Węzły innych bloków połączonych z usuniętym elementem powinny być z powrotem widoczne</li>
+		</ul>
+  </li>
+  <li>Usuwanie elementów:
+       <ul>
+	    <li>Wybranie narzędzia usuwania z panelu Edycja (ikonka kosza) powoduje przejście w tryb usuwania</li>
+	    <li>Kliknięcie LPM w dowolny element w tym trybie powoduje usunięcie tego elementu oraz jego połączeń z innymi elementami</li>
+		<li>W przypadku usunięcia zaznaczonego elementu należy pamiętać, żeby wyczyścić pole tekstowe w panelu Edycji</li>
+		<li>Podczas poruszania jakimś elementem usuwanie powinno być zablokowane</li>
+		</ul>
+  </li>
+  <li>Panel Edycji i rodzaje bloków:
+       <ul>
+	    <li>Panel edycji zawiera teraz 6 stałego rozmiaru przycisków narzędzi z odpowiednimi ikonkami</li>
+	    <li>Dodatkowo pod tymi przyciskami znajduje się Label oraz pole tekstowe odpowiadające zawartości zaznaczonego bloku (opisane w sekcji Edycja elementów)</li>
+		<li>Kliknięcie jednego z narzędzi powoduje jego podświetlenie i przejście aplikacji w odpowiedni tryb (wstawiania danego elementu, łączenia, usuwania)</li>		
+		<li>Dostępne narzędzia oraz opis tworzonych elementów:
+			<ul>
+			<li>Blok startowy - można wstawić tylko jeden taki blok w całym schemacie (przy próbie wstawienia kolejnych powinien wyświetlać się komunikat), ma kształt elipsy,
+			jest zielonego koloru i posiada jeden węzeł wyjściowy na dole. Na jego środku powinien być napis START.
+			Ten napis jest stały i nie da się go edytować</li>
+			<li>Blok końcowy - ma kształt elipsy, jest czerwonego koloru i posiada jeden węzeł wejściowy na górze. Na jego środku powinien być napis STOP. Ten napis jest stały i nie da się go edytować</li>
+			<li>Blok operacyjny - ma kształt prostokąta, jest czarnego koloru i posiada jeden węzeł wejściowy na górze oraz jeden węzeł wyjściowy na dole. 
+			Pojawia się z jakimś ustalonym napisem na środku, który mozna później edytować</li>
+			<li>Blok decyzyjny - ma kształt rombu, jest czarnego koloru i posiada jeden węzeł wejściowy na górze oraz dwa węzły wyjściowe po bokach. 
+			Pojawia się z jakimś ustalonym napisem na środku, który mozna później edytować. Jedno wyjście odpowiada spełnieniu warunku, drugie jego nie spełnieniu. 
+			Wyjścia powinny być rozróżnialne, (np. poprzez napisy True/False, literki T/F, itp.)</li>
+			<li>Narzędzie łączenia elementów - opisane wyżej</li>
+			<li>Narzędzie usuwania elementów - opisane wyżej</li>
+			</ul>
+		</li>
+		</ul>
+  </li>
+  <li>Języki i lokalizacja:
+       <ul>
+	   <li>Aplikacja powinna wspierać lokalizację i obsługiwać dwa języki (Polski oraz jakiś inny, preferowany Angielski).</li>
+	   <li>Przy włączeniu aplikacja jest ustawiona na język polski</li>
+		<li>Sekcja "Język" zawiera dwa przyciski które zmieniają aktualne ustawienia lokalizacji. Każdy napis 
+		powinien zostać zmieniony na odpowiednik w innym języku.</br><b>Uwaga:</b> powinno być to wykonane przy użyciu mechanizmu lokalizacji
+		- podmienianie właściwości Text/Title nie będzie punktowane</li>
+		<li>Wszystkie kontrolki powinny być poprawnie przeładowane po zmianie lokalizacji</li>
+		<li>Okno główne powinno pozostać w tej samej pozycji oraz być tej samej wielkości</li>
+		<li>Należy pamiętać o okienku tworzenia nowego schematu, komunikatach oraz napisach na nowo utworzonych elementach schematu</li>
+		</ul>
+  </li>
+
+  <li>Wskazówki:
+    <ul>
+        <li>MouseMove, MouseUp Events</li>
+		<li>Textbox.Multiline, </li>
+        <li>Invalidate method, DashPattern</li>
+        <li>Form.Localizable, CultureInfo.CurrentUICulture, ResourceManager</li>
+		<li>OpenFileDialog, SaveFileDialog</li>
+    </ul>
+  </li>
+  <li><i>Uwaga: We wszystkich wątpliwych i nieopisanych aspektach obowiązuje odtwarzanie zachowania programu wzorcowego (poza ewentualnymi błędami).</i></li>
+</ul>
+<ul>
+	<li>Orientacyjna punktacja:
+	<ul>
+		<li>Poprawne wczytywanie i zapisywanie plików - <b>2p</b></li>
+		<li>Edycja elementów:
+		<ul>
+			<li>Zaznaczanie i zmiana tekstu - <b>1p</b></li>
+			<li>Poruszanie - <b>1p</b></li>
+		</ul>
+		</li>
+		<li>Łączenie elementów:
+		<ul>
+			<li>Implementacja węzłów - <b>1p</b></li>
+			<li>Łączenie oraz graficzna reprezentacja, odpowiednie usuwanie połączeń przy usuwaniu bloków - <b>2p</b></li>
+		</ul>
+		</li>
+		<li>Usuwanie elementów - <b>1p</b></li>
+		<li>Panel edycji i rodzaje bloków (odpowiedni layout, rozróżnienie rodzajów bloków do wstawienia)- <b>2p</b></li>
+		<li>Język i lokalizacja - <b>2p</b></li>		
+		<li><i>Uwaga: Wszystkie funkcjonalności z części laboratoryjnej powinny działać poprawnie aby część domowa była oceniona</i></li>
+
+	</ul>
+	</li>
+</ul>
+</body>
+
+</html>
